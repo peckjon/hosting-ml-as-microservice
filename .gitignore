@@ -102,3 +102,12 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# IDE tempfiles
+.idea
+
+# pickled models
+*.pickle
+
+# notebook checkpoints
+*/.ipynb_checkpoints
