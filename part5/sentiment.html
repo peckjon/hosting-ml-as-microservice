@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <style>
+      div { width: 200px; padding-bottom: 20px; }
+      textarea { width: 200px; height: 50px; }
+      button { width: 100px; height: 25px; display: block; }
+    </style>
+    <script>
+    var score = function() {
+      var review = document.getElementById("review").value;
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+             document.getElementById("output").innerHTML += "<div>"+JSON.parse(xhttp.responseText).args.text+"</div>";
+          }
+      };
+      xhttp.open("GET", "http://httpbin.org/get?text="+review, true);
+      xhttp.send();
+    }
+    </script>
+  </head>
+  <body>
+    <div>Enter your review:</div>
+    <form onsubmit="return false">
+      <textarea id="review"></textarea>
+      <button onclick="score();">Score it!</button>
+    </form>
+  <div id="output"></div>
+  </body>
+</html>
